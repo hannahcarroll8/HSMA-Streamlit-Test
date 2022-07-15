@@ -1,5 +1,4 @@
 simpy==4.0.1
-random
 pandas==1.2.4
 numpy==1.20.1
 streamlit==1.9.1
