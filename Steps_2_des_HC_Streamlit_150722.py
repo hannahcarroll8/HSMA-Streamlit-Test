@@ -117,9 +117,9 @@ class g:
     completed_df["No of Appts"] = []
     completed_df.set_index("P_ID", inplace=True)
     
-    duration = 10
+    duration = 52
     num_runs = 1
-    warm_up = 10
+    warm_up = 52
     sim_duration = warm_up + duration
 
 class Patient:
