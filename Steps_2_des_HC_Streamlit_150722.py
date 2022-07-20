@@ -248,12 +248,13 @@ class Step_3_Model:
         #grab an ieso appointment
         with self.ieso.request(priority=p.priority) as req:
             yield req
-            #calculate the patient's wait time and add to dataframe
+            #calculate the patient's wait time
             p.q_end = self.env.now
-            p.wait_time     = p.q_end - p.q_start
+            p.wait_time = p.q_end - p.q_start
+            
             #sample the number of appointments patient will attend
-            p.appointments = int(random.expovariate(1.0 / 
-                                                         g.mean_sess_no_ieso))
+            p.appointments = 1 + int(random.expovariate(1.0 / 
+                                                     (g.mean_sess_no_ieso - 1)))
             
             #Remove patient from queue DF
             g.current_q_df = g.current_q_df.drop(p.p_id)
@@ -280,12 +281,12 @@ class Step_3_Model:
             with self.app_121_f2f_eve.request(priority=p.priority) as req:
                 yield req
                 
-                #End and calculate the wait time and add to dataframe
+                #Calculate the wait time and add to dataframe
                 p.q_end = self.env.now
                 p.wait_time = p.q_end - p.q_start
                 
                 #Sample the number of appointments patient will attend
-                p.appointments = int(random.expovariate(1.0/g.mean_sess_no_121))
+                p.appointments = 1 + int(random.expovariate(1.0/(g.mean_sess_no_121 - 1)))
                 
                 #Remove patient from queue DF
                 g.current_q_df = g.current_q_df.drop(p.p_id)
@@ -310,13 +311,13 @@ class Step_3_Model:
         elif p.eve_prefer == True and p.f2f_prefer == False:
             with self.app_121_v_eve.request(priority=p.priority) as req:
                 yield req
-                #End and calculate the wait time and add to dataframe
+                #Calculate the wait time and add to dataframe
                 p.q_end = self.env.now
                 p.wait_time = p.q_end - p.q_start
                 
                 #Sample the number of appointments patient will attend
-                p.appointments = int(random.expovariate(
-                    1.0/g.mean_sess_no_121))
+                p.appointments = 1 + int(random.expovariate(
+                    1.0/(g.mean_sess_no_121 - 1)))
                 
                 #Remove patient from queue DF
                 g.current_q_df = g.current_q_df.drop(p.p_id)
@@ -348,7 +349,7 @@ class Step_3_Model:
                 p.wait_time = p.q_end - p.q_start
                 
                 #Sample the number of appointments patient will attend
-                p.appointments = int(random.expovariate(1.0/g.mean_sess_no_121))
+                p.appointments = 1 + int(random.expovariate(1.0/(g.mean_sess_no_121 - 1)))
                 
                 #Remove patient from queue DF
                 g.current_q_df = g.current_q_df.drop(p.p_id)
@@ -379,7 +380,7 @@ class Step_3_Model:
                 p.wait_time = p.q_end - p.q_start
                 
                 #Sample the number of appointments patient will attend
-                p.appointments = int(random.expovariate(1.0/g.mean_sess_no_121))
+                p.appointments = 1 + int(random.expovariate(1.0/(g.mean_sess_no_121 - 1)))
                 
                 #Remove patient from queue DF
                 g.current_q_df = g.current_q_df.drop(p.p_id)
@@ -442,6 +443,9 @@ class Step_3_Model:
                     p.q_end = self.env.now
                     p.wait_time = p.q_end - p.q_start
                     
+                    #Number of appointments patient will attend
+                    p.appointments = g.sess_no_group
+                    
                     #Remove patient from queue DF
                     g.current_q_df = g.current_q_df.drop(p.p_id)
                     
@@ -467,6 +471,9 @@ class Step_3_Model:
                 #Calculate wait time
                 p.q_end = self.env.now
                 p.wait_time = p.q_end - p.q_start
+                
+                #Number of appointments patient will attend
+                p.appointments = g.sess_no_group
                     
                 #Remove patient from queue DF
                 g.current_q_df = g.current_q_df.drop(p.p_id)
@@ -493,6 +500,9 @@ class Step_3_Model:
                     #Calculate wait time
                     p.q_end = self.env.now
                     p.wait_time = p.q_end - p.q_start
+                    
+                    #Number of appointments patient will attend
+                    p.appointments = g.sess_no_group
                     
                     #Remove patient from queue DF
                     g.current_q_df = g.current_q_df.drop(p.p_id)
