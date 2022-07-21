@@ -16,26 +16,32 @@ class g:
     with st.sidebar:
         mean_new = st.number_input("Mean number of new patients per week", 
                                    min_value=0.0, max_value=200.0, value=44.29)
-        prob_prefer_eve = st.number_input("Probability a patient will prefer " 
+        percent_prefer_eve = st.number_input("Percentage of patients who prefer " 
                                           "evening appointments", 
-                                          min_value = 0.00, max_value=1.00, 
-                                          value=0.133)
-        prob_prefer_f2f = st.number_input("Probability a patient will prefer "
+                                          min_value = 0.0, max_value=100.0, 
+                                          value=13.3)
+        prob_prefer_eve = percent_prefer_eve/100
+        percent_prefer_f2f = st.number_input("Percentage of patients who prefer "
                                           "face to face appointments", 
-                                          min_value = 0.00, max_value=1.00, 
-                                          value=0.208)
-        prob_priority = st.number_input("Probability a patient will be a "
-                                        "priority patient", min_value = 0.0, 
-                                        max_value=1.0, value=0.14)
-        prob_refer_ieso = st.number_input("Probability a patient will be "
+                                          min_value = 0.0, max_value=100.0, 
+                                          value=20.8)
+        prob_prefer_f2f = percent_prefer_f2f/100
+        percent_priority = st.number_input("Percentage patients who are "
+                                        "priority patients", min_value = 0.0, 
+                                        max_value=100.0, value=14.0)
+        prob_priority = percdent_priority/100
+        percent_ieso = st.number_input("Percentage of patients who are "
                                           "referred to IESO", min_value = 0.0, 
                                           max_value=1.0, value=0.18)
-        prob_refer_121 = st.number_input("Probability a patient will be "
-                                         "referred to 121", min_value = 0.0, 
-                                         max_value=1.0, value=0.63)
-        prob_refer_group = st.number_input("Probability a patient will be "
-                                           "referred to group",min_value = 0.0, 
-                                           max_value=1.0, value=0.19)
+        prob_refer_ieso = percent_ieso/100
+        percent_121 = st.number_input("Percentage of patients who are "
+                                         "referred to 121 therapy", min_value = 0.0, 
+                                         max_value=100.0, value=63.0)
+        prob_refer_121 = percent_121/100
+        percent_group = st.number_input("Percentage of patients who are "
+                                           "referred to group thereapy",min_value = 0.0, 
+                                           max_value=100.0, value=19.0)
+        prob_refer_group = percent_group/100
         mean_wait_ieso = st.number_input("Mean number of weeks patients wait "
                                          "for IESO", min_value = 0.0, 
                                          max_value = 52.0,value = 5.93)
@@ -44,7 +50,7 @@ class g:
                                         min_value = 1, max_value = 25, 
                                         value = 12)
         mean_sess_no_121 = st.number_input("Mean number of sessions patients "
-                                           "undertake for 121", min_value = 1, 
+                                           "undertake for 121 therapy", min_value = 1, 
                                            max_value = 30, value = 13)
         mean_sess_no_ieso = st.number_input("Mean number of sessions patients "
                                             "undertake for IESO", 
@@ -83,7 +89,7 @@ class g:
                                               "121 appointments available per "
                                               "week", min_value = 0, 
                                               max_value = 400, value = 77)
-        num_app_121_v_day = st.number_input("Number of daytime virtual "
+        num_app_121_v_day = st.number_input("Number of daytime virtual 121"
                                             "appointments available per week", 
                                             min_value = 0, max_value = 400, 
                                             value = 293)
