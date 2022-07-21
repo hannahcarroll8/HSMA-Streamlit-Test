@@ -29,7 +29,7 @@ class g:
         percent_priority = st.number_input("Percentage patients who are "
                                         "priority patients", min_value = 0.0, 
                                         max_value=100.0, value=14.0)
-        prob_priority = percdent_priority/100
+        prob_priority = percent_priority/100
         percent_ieso = st.number_input("Percentage of patients who are "
                                           "referred to IESO", min_value = 0.0, 
                                           max_value=1.0, value=0.18)
