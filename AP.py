@@ -433,9 +433,9 @@ for run in range(g.num_runs):
     model.run()
     
     #Calculate wait times for current queue
-    model.referral_df["Started Queueing"] = g.sim_duration - model.referral_df[
-                                                            "Started Queueing"]
-    model.referral_df.rename(columns={"Started Queueing":"Wait time"}, 
+    model.referral_df["Started Queuing"] = g.sim_duration - model.referral_df[
+                                                            "Started Queuing"]
+    model.referral_df.rename(columns={"Started Queuing":"Wait time"}, 
                                                                   inplace=True)
     
     #Stats
