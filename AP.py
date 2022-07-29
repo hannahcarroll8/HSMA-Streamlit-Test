@@ -223,12 +223,12 @@ class Step_3_Model:
             #Append patient info to df (post warm up only)
             #if self.env.now > g.warm_up:
             df_to_add = pd.DataFrame({"P_ID":[p.p_id],
-                                     # "Evening Appt?":[p.eve_prefer],
-                                     # "Need F2F?":[p.f2f_prefer],
-                                     # "Priority Patient?":[p.priority],
+                                      "Evening Appt?":[p.eve_prefer],
+                                      "Need F2F?":[p.f2f_prefer],
+                                      "Priority Patient?":[p.priority],
                                       "Wait time":np.round(
                                           [p.wait_time],2),
-                                      #"Stage":["IESO"],
+                                      "Stage":["IESO"],
                                       "No of Appts":[sample_ieso_appoint]})
             df_to_add.set_index("P_ID", inplace=True)
             self.results_df = self.results_df.append(df_to_add)
@@ -256,12 +256,12 @@ class Step_3_Model:
                 #Append patient info to df (post warm up only)
                 #if self.env.now > g.warm_up:
                 df_to_add = pd.DataFrame({"P_ID":[p.p_id],
-                                      #"Evening Appt?":[p.eve_prefer],
-                                      #"Need F2F?":[p.f2f_prefer],
-                                      #"Priority Patient?":[p.priority],
+                                      "Evening Appt?":[p.eve_prefer],
+                                      "Need F2F?":[p.f2f_prefer],
+                                      "Priority Patient?":[p.priority],
                                       "Wait time":np.round(
                                           [p.wait_time],2),
-                                     #"Stage":["121"],
+                                     "Stage":["121"],
                                       "No of Appts":[sample_121_appoint]})
                 df_to_add.set_index("P_ID", inplace=True)
                 self.results_df = self.results_df.append(df_to_add)
@@ -286,12 +286,12 @@ class Step_3_Model:
                 #Append patient info to df (post warm up only)
                 #if self.env.now > g.warm_up:
                 df_to_add = pd.DataFrame({"P_ID":[p.p_id],
-                                          #"Evening Appt?":[p.eve_prefer],
-                                         # "Need F2F?":[p.f2f_prefer],
-                                          #"Priority Patient?":[p.priority],
+                                          "Evening Appt?":[p.eve_prefer],
+                                          "Need F2F?":[p.f2f_prefer],
+                                          "Priority Patient?":[p.priority],
                                           "Wait time":np.round(
                                               [p.wait_time],2),
-                                          #"Stage":["121"],
+                                          "Stage":["121"],
                                           "No of Appts":[
                                               sample_121_appoint]})
                 df_to_add.set_index("P_ID", inplace=True)
@@ -318,12 +318,12 @@ class Step_3_Model:
                 #Append patient info to df (post warm up only)
                 #if self.env.now > g.warm_up:
                 df_to_add = pd.DataFrame({"P_ID":[p.p_id],
-                                      #"Evening Appt?":[p.eve_prefer],
-                                      #"Need F2F?":[p.f2f_prefer],
-                                      #"Priority Patient?":[p.priority],
+                                      "Evening Appt?":[p.eve_prefer],
+                                      "Need F2F?":[p.f2f_prefer],
+                                      "Priority Patient?":[p.priority],
                                       "Wait time":np.round(
                                           [p.wait_time],2),
-                                      #"Stage":["121"],
+                                      "Stage":["121"],
                                       "No of Appts":[sample_121_appoint]})
                 df_to_add.set_index("P_ID", inplace=True)
                 self.results_df = self.results_df.append(df_to_add)
@@ -349,12 +349,12 @@ class Step_3_Model:
                 #Append patient info to df (post warm up only)
                 #if self.env.now > g.warm_up:
                 df_to_add = pd.DataFrame({"P_ID":[p.p_id],
-                                         # "Evening Appt?":[p.eve_prefer],
-                                         # "Need F2F?":[p.f2f_prefer],
-                                          #"Priority Patient?":[p.priority],
+                                          "Evening Appt?":[p.eve_prefer],
+                                          "Need F2F?":[p.f2f_prefer],
+                                          "Priority Patient?":[p.priority],
                                           "Wait time":np.round(
                                               [p.wait_time],2),
-                                          #"Stage":["121"],
+                                          "Stage":["121"],
                                           "No of Appts":[
                                               sample_121_appoint]})
                 df_to_add.set_index("P_ID", inplace=True)
@@ -381,12 +381,12 @@ class Step_3_Model:
                 #Append patient info to df (post warm up only)
                 #if self.env.now > g.warm_up:
                 df_to_add = pd.DataFrame({"P_ID":[p.p_id],
-                                      #"Evening Appt?":[p.eve_prefer],
-                                      #"Need F2F?":[p.f2f_prefer],
-                                      #"Priority Patient?":[p.priority],
+                                      "Evening Appt?":[p.eve_prefer],
+                                      "Need F2F?":[p.f2f_prefer],
+                                      "Priority Patient?":[p.priority],
                                       "Wait time":np.round(
                                           [p.wait_time],2),
-                                      #"Stage":["Group"],
+                                      "Stage":["Group"],
                                       "No of Appts":[g.sess_no_group]})
                 df_to_add.set_index("P_ID", inplace=True)
                 self.results_df = self.results_df.append(df_to_add)
@@ -407,11 +407,11 @@ class Step_3_Model:
                 #Append patient info to df (post warm up only)
                 #if self.env.now > g.warm_up:
                 df_to_add = pd.DataFrame({"P_ID":[p.p_id],
-                                      #"Evening Appt?":[p.eve_prefer],
-                                      #"Need F2F?":[p.f2f_prefer],
-                                      #"Priority Patient?":[p.priority],
+                                      "Evening Appt?":[p.eve_prefer],
+                                      "Need F2F?":[p.f2f_prefer],
+                                      "Priority Patient?":[p.priority],
                                       "Wait time":np.round([p.wait_time],2),
-                                      #"Stage":["Group"],
+                                      "Stage":["Group"],
                                       "No of Appts":[g.sess_no_group]})
                 df_to_add.set_index("P_ID", inplace=True)
                 self.results_df = self.results_df.append(df_to_add)
