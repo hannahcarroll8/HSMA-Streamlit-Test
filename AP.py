@@ -73,9 +73,9 @@ class g:
             1,50,11, key=1) #num evening group appointments available per week ##48
     num_app_group_day = col12.slider('Number of Group Daytime appointments p/w',
             1,200,77, key=2)  #num daytime group appointments available per week ##174
-    sim_duration = 78
+    sim_duration = 52
     num_runs = 1
-    warm_up = 26
+    warm_up = 1
 
 class Patient:
     def __init__(self, p_id):
