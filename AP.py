@@ -466,6 +466,32 @@ for run in range(g.num_runs):
      #                             inplace=True)
     #wait_by_priority_stats.columns = wait_by_priority_stats.columns.droplevel(-2)
     
+    st.header("Statistics For Patients Who Have Finished Queueing")
+    "Wait time statistics across all patients"
+    st.metric(label="Total Patients", value=int(wait_all_stats["count"]))
+    st.metric(label="Mean Wait Time", value=round(wait_all_stats["mean"], 2))
+    st.write(wait_all_stats.style.format("{:.2f}"))
+    "Wait time statistics by treatment type"
+    st.metric(label="IESO Mean Wait Time", 
+              value=round(wait_by_treatment_stats.at["IESO","mean"], 2))
+    st.metric(label="Group Mean Wait Time", 
+              value=round(wait_by_treatment_stats.at["Group","mean"], 2))
+    st.metric(label="121 Mean Wait Time", 
+              value=round(wait_by_treatment_stats.at["121","mean"], 2))
+    st.write(wait_by_treatment_stats.style.format("{:.2f}"))
+    "Wait time statistics by daytime/evening preference"
+    st.metric(label="Daytime Mean Wait Time", 
+              value=round(wait_by_evening_stats.at["Daytime","mean"], 2))
+    st.metric(label="Evening Mean Wait Time", 
+              value=round(wait_by_evening_stats.at["Evening","mean"], 2))
+    st.write(wait_by_evening_stats.style.format("{:.2f}"))
+    "Wait time statistics by face to face/virtual preference"
+    st.metric(label="Face to Face Mean Wait Time", 
+              value=round(wait_by_f2f_stats.at["F2F","mean"], 2))
+    st.metric(label="Virtual Mean Wait Time", 
+              value=round(wait_by_f2f_stats.at["Virtual","mean"], 2))
+    st.write(wait_by_f2f_stats.style.format("{:.2f}"))
+    
     
     """
     
