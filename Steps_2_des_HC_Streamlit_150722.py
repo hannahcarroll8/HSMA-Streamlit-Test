@@ -125,7 +125,7 @@ class g:
     
     duration = 52
     num_runs = 1
-    warm_up = 52
+    warm_up = 152
     sim_duration = warm_up + duration
 
 class Patient:
