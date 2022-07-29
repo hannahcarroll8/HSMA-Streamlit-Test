@@ -73,9 +73,9 @@ class g:
             1,50,11, key=1) #num evening group appointments available per week ##48
     num_app_group_day = col12.slider('Number of Group Daytime appointments p/w',
             1,200,77, key=2)  #num daytime group appointments available per week ##174
-    sim_duration = 156
+    sim_duration = 78
     num_runs = 1
-    warm_up = 104
+    warm_up = 26
 
 class Patient:
     def __init__(self, p_id):
@@ -431,6 +431,44 @@ for run in range(g.num_runs):
     print (f"Run {run+1} of {g.num_runs}")
     model = Step_3_Model()
     model.run()
+    
+    #Calculate wait times for current queue
+    model.referral_df["Started Queueing"] = g.sim_duration - model.referral_df[
+                                                            "Started Queueing"]
+    model.referral_df.rename(columns={"Started Queueing":"Wait time"}, 
+                                                                  inplace=True)
+    
+    #Stats
+    wait_all_stats = model.results_df["Wait time"].describe()
+    wait_all_stats = wait_all_stats.to_frame()
+    wait_all_stats = wait_all_stats.T
+    
+    wait_by_treatment_stats = model.results_df[["Stage", "Wait time"]].groupby(
+                                                           "Stage").describe()
+    wait_by_treatment_stats.columns=wait_by_treatment_stats.columns.droplevel(-2)
+    
+    wait_by_evening_stats = model.results_df[["Evening Appt?", 
+                             "Wait time"]].groupby("Evening Appt?").describe()
+    wait_by_evening_stats.rename(index={0.0:'Daytime', 1.0:'Evening'}, 
+                                 inplace=True)
+    wait_by_evening_stats.columns = wait_by_evening_stats.columns.droplevel(-2)
+    
+    wait_by_f2f_stats = model.results_df[["Need F2F?", 
+                              "Wait time"]].groupby("Need F2F?").describe()
+    wait_by_f2f_stats.rename(index={0.0:'Virtual', 1.0:'F2F'}, inplace=True)
+    wait_by_f2f_stats.columns = wait_by_f2f_stats.columns.droplevel(-2)
+    
+    
+    wait_by_priority_stats = model.results[["Priority Patient?", 
+                                "Wait time"]].groupby(
+                                    "Priority Patient?").describe()
+    wait_by_priority_stats.rename(index={0.0:'Priority', 1.0:'Not Priority'}, 
+                                  inplace=True)
+    wait_by_priority_stats.columns = wait_by_priority_stats.columns.droplevel(-2)
+    
+    
+    """
+    
     new_df = model.referral_df.merge(model.results_df, on='P_ID', how='outer')
     new_df['No: Weeks waiting'] = np.where(new_df['Wait time'].isna(),
                     round((g.sim_duration - new_df['Started Queuing']),2), 0)
@@ -523,11 +561,11 @@ GRP_s_eve_delta = round(GRP_eve_df_complete['Wait time'].sum()/len(GRP_eve_df_co
 
 st.write(
     """
-    <style>
-    [data-testid="stMetricDelta"] svg {
-        display: none;
-    }
-    </style>
+    ##<style>
+    ##[data-testid="stMetricDelta"] svg {
+     ##   display: none;
+   ## }
+    ##</style>
     """,
     unsafe_allow_html=True,
 )
@@ -698,4 +736,4 @@ tab27.write('Group evening complete')
 tab27.dataframe(GRP_eve_df_complete)
 tab17.write('Group evening waiting')
 tab17.dataframe(GRP_eve_df_waiting)
-    
+    """
