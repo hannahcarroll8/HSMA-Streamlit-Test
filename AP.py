@@ -459,12 +459,12 @@ for run in range(g.num_runs):
     wait_by_f2f_stats.columns = wait_by_f2f_stats.columns.droplevel(-2)
     
     
-    wait_by_priority_stats = model.results[["Priority Patient?", 
-                                "Wait time"]].groupby(
-                                    "Priority Patient?").describe()
-    wait_by_priority_stats.rename(index={0.0:'Priority', 1.0:'Not Priority'}, 
-                                  inplace=True)
-    wait_by_priority_stats.columns = wait_by_priority_stats.columns.droplevel(-2)
+    #wait_by_priority_stats = model.results[["Priority Patient?", 
+     #                           "Wait time"]].groupby(
+      #                              "Priority Patient?").describe()
+    #wait_by_priority_stats.rename(index={0.0:'Priority', 1.0:'Not Priority'}, 
+     #                             inplace=True)
+    #wait_by_priority_stats.columns = wait_by_priority_stats.columns.droplevel(-2)
     
     
     """
