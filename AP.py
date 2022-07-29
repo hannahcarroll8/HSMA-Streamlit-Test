@@ -221,17 +221,17 @@ class Step_3_Model:
             sample_ieso_appoint = int(random.expovariate(1.0 / 
                                                          g.mean_sess_no_ieso))
             #Append patient info to df (post warm up only)
-            #if self.env.now > g.warm_up:
-            df_to_add = pd.DataFrame({"P_ID":[p.p_id],
-                                      "Evening Appt?":[p.eve_prefer],
-                                      "Need F2F?":[p.f2f_prefer],
-                                      "Priority Patient?":[p.priority],
-                                      "Wait time":np.round(
-                                          [p.wait_time],2),
-                                      "Stage":["IESO"],
-                                      "No of Appts":[sample_ieso_appoint]})
-            df_to_add.set_index("P_ID", inplace=True)
-            self.results_df = self.results_df.append(df_to_add)
+            if self.env.now > g.warm_up:
+                df_to_add = pd.DataFrame({"P_ID":[p.p_id],
+                                          "Evening Appt?":[p.eve_prefer],
+                                          "Need F2F?":[p.f2f_prefer],
+                                          "Priority Patient?":[p.priority],
+                                          "Wait time":np.round(
+                                              [p.wait_time],2),
+                                          "Stage":["IESO"],
+                                          "No of Appts":[sample_ieso_appoint]})
+                df_to_add.set_index("P_ID", inplace=True)
+                self.results_df = self.results_df.append(df_to_add)
             
             #hold the appointment for the sampled number of weeks
             yield self.env.timeout(sample_ieso_appoint)
@@ -254,17 +254,17 @@ class Step_3_Model:
                     1.0/g.mean_sess_no_121))
                 
                 #Append patient info to df (post warm up only)
-                #if self.env.now > g.warm_up:
-                df_to_add = pd.DataFrame({"P_ID":[p.p_id],
-                                      "Evening Appt?":[p.eve_prefer],
-                                      "Need F2F?":[p.f2f_prefer],
-                                      "Priority Patient?":[p.priority],
-                                      "Wait time":np.round(
-                                          [p.wait_time],2),
-                                     "Stage":["121"],
-                                      "No of Appts":[sample_121_appoint]})
-                df_to_add.set_index("P_ID", inplace=True)
-                self.results_df = self.results_df.append(df_to_add)
+                if self.env.now > g.warm_up:
+                    df_to_add = pd.DataFrame({"P_ID":[p.p_id],
+                                          "Evening Appt?":[p.eve_prefer],
+                                          "Need F2F?":[p.f2f_prefer],
+                                          "Priority Patient?":[p.priority],
+                                          "Wait time":np.round(
+                                              [p.wait_time],2),
+                                         "Stage":["121"],
+                                          "No of Appts":[sample_121_appoint]})
+                    df_to_add.set_index("P_ID", inplace=True)
+                    self.results_df = self.results_df.append(df_to_add)
                 
                 #Hold for sampled number of weeks
                 yield self.env.timeout(sample_121_appoint)
@@ -284,19 +284,19 @@ class Step_3_Model:
                     1.0/g.mean_sess_no_121))
                 
                 #Append patient info to df (post warm up only)
-                #if self.env.now > g.warm_up:
-                df_to_add = pd.DataFrame({"P_ID":[p.p_id],
-                                          "Evening Appt?":[p.eve_prefer],
-                                          "Need F2F?":[p.f2f_prefer],
-                                          "Priority Patient?":[p.priority],
-                                          "Wait time":np.round(
-                                              [p.wait_time],2),
-                                          "Stage":["121"],
-                                          "No of Appts":[
-                                              sample_121_appoint]})
-                df_to_add.set_index("P_ID", inplace=True)
-                self.results_df = self.results_df.append(df_to_add)
-                
+                if self.env.now > g.warm_up:
+                    df_to_add = pd.DataFrame({"P_ID":[p.p_id],
+                                              "Evening Appt?":[p.eve_prefer],
+                                              "Need F2F?":[p.f2f_prefer],
+                                              "Priority Patient?":[p.priority],
+                                              "Wait time":np.round(
+                                                  [p.wait_time],2),
+                                              "Stage":["121"],
+                                              "No of Appts":[
+                                                  sample_121_appoint]})
+                    df_to_add.set_index("P_ID", inplace=True)
+                    self.results_df = self.results_df.append(df_to_add)
+
                 #Hold for sampled number of weeks
                 yield self.env.timeout(sample_121_appoint)
                 #Exit point
@@ -316,17 +316,17 @@ class Step_3_Model:
                     1.0/g.mean_sess_no_121))
                 
                 #Append patient info to df (post warm up only)
-                #if self.env.now > g.warm_up:
-                df_to_add = pd.DataFrame({"P_ID":[p.p_id],
-                                      "Evening Appt?":[p.eve_prefer],
-                                      "Need F2F?":[p.f2f_prefer],
-                                      "Priority Patient?":[p.priority],
-                                      "Wait time":np.round(
-                                          [p.wait_time],2),
-                                      "Stage":["121"],
-                                      "No of Appts":[sample_121_appoint]})
-                df_to_add.set_index("P_ID", inplace=True)
-                self.results_df = self.results_df.append(df_to_add)
+                if self.env.now > g.warm_up:
+                    df_to_add = pd.DataFrame({"P_ID":[p.p_id],
+                                          "Evening Appt?":[p.eve_prefer],
+                                          "Need F2F?":[p.f2f_prefer],
+                                          "Priority Patient?":[p.priority],
+                                          "Wait time":np.round(
+                                              [p.wait_time],2),
+                                          "Stage":["121"],
+                                          "No of Appts":[sample_121_appoint]})
+                    df_to_add.set_index("P_ID", inplace=True)
+                    self.results_df = self.results_df.append(df_to_add)
             
                 #Hold for sampled number of weeks
                 yield self.env.timeout(sample_121_appoint)
@@ -347,18 +347,18 @@ class Step_3_Model:
                     1.0/g.mean_sess_no_121))
                 
                 #Append patient info to df (post warm up only)
-                #if self.env.now > g.warm_up:
-                df_to_add = pd.DataFrame({"P_ID":[p.p_id],
-                                          "Evening Appt?":[p.eve_prefer],
-                                          "Need F2F?":[p.f2f_prefer],
-                                          "Priority Patient?":[p.priority],
-                                          "Wait time":np.round(
-                                              [p.wait_time],2),
-                                          "Stage":["121"],
-                                          "No of Appts":[
-                                              sample_121_appoint]})
-                df_to_add.set_index("P_ID", inplace=True)
-                self.results_df = self.results_df.append(df_to_add)
+                if self.env.now > g.warm_up:
+                    df_to_add = pd.DataFrame({"P_ID":[p.p_id],
+                                              "Evening Appt?":[p.eve_prefer],
+                                              "Need F2F?":[p.f2f_prefer],
+                                              "Priority Patient?":[p.priority],
+                                              "Wait time":np.round(
+                                                  [p.wait_time],2),
+                                              "Stage":["121"],
+                                              "No of Appts":[
+                                                  sample_121_appoint]})
+                    df_to_add.set_index("P_ID", inplace=True)
+                    self.results_df = self.results_df.append(df_to_add)
                 
                 #Hold for sampled number of weeks
                 yield self.env.timeout(sample_121_appoint)
@@ -379,17 +379,17 @@ class Step_3_Model:
                       f"therapy for {p.wait_time} weeks")
                 
                 #Append patient info to df (post warm up only)
-                #if self.env.now > g.warm_up:
-                df_to_add = pd.DataFrame({"P_ID":[p.p_id],
-                                      "Evening Appt?":[p.eve_prefer],
-                                      "Need F2F?":[p.f2f_prefer],
-                                      "Priority Patient?":[p.priority],
-                                      "Wait time":np.round(
-                                          [p.wait_time],2),
-                                      "Stage":["Group"],
-                                      "No of Appts":[g.sess_no_group]})
-                df_to_add.set_index("P_ID", inplace=True)
-                self.results_df = self.results_df.append(df_to_add)
+                if self.env.now > g.warm_up:
+                    df_to_add = pd.DataFrame({"P_ID":[p.p_id],
+                                          "Evening Appt?":[p.eve_prefer],
+                                          "Need F2F?":[p.f2f_prefer],
+                                          "Priority Patient?":[p.priority],
+                                          "Wait time":np.round(
+                                              [p.wait_time],2),
+                                          "Stage":["Group"],
+                                          "No of Appts":[g.sess_no_group]})
+                    df_to_add.set_index("P_ID", inplace=True)
+                    self.results_df = self.results_df.append(df_to_add)
                 
                 #Hold for the specified number of weeks
                 yield self.env.timeout(g.sess_no_group)
@@ -405,16 +405,16 @@ class Step_3_Model:
                       f"therapy for {p.wait_time} weeks")
                 
                 #Append patient info to df (post warm up only)
-                #if self.env.now > g.warm_up:
-                df_to_add = pd.DataFrame({"P_ID":[p.p_id],
-                                      "Evening Appt?":[p.eve_prefer],
-                                      "Need F2F?":[p.f2f_prefer],
-                                      "Priority Patient?":[p.priority],
-                                      "Wait time":np.round([p.wait_time],2),
-                                      "Stage":["Group"],
-                                      "No of Appts":[g.sess_no_group]})
-                df_to_add.set_index("P_ID", inplace=True)
-                self.results_df = self.results_df.append(df_to_add)
+                if self.env.now > g.warm_up:
+                    df_to_add = pd.DataFrame({"P_ID":[p.p_id],
+                                          "Evening Appt?":[p.eve_prefer],
+                                          "Need F2F?":[p.f2f_prefer],
+                                          "Priority Patient?":[p.priority],
+                                          "Wait time":np.round([p.wait_time],2),
+                                          "Stage":["Group"],
+                                          "No of Appts":[g.sess_no_group]})
+                    df_to_add.set_index("P_ID", inplace=True)
+                    self.results_df = self.results_df.append(df_to_add)
                 
                 #Hold for the specified number of weeks
                 yield self.env.timeout(g.sess_no_group)
