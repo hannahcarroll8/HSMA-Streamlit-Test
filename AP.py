@@ -73,9 +73,9 @@ class g:
             1,50,11, key=1) #num evening group appointments available per week ##48
     num_app_group_day = col12.slider('Number of Group Daytime appointments p/w',
             1,200,77, key=2)  #num daytime group appointments available per week ##174
-    sim_duration = 78
+    sim_duration = 156
     num_runs = 1
-    warm_up = 26
+    warm_up = 104
 
 class Patient:
     def __init__(self, p_id):
@@ -437,6 +437,13 @@ for run in range(g.num_runs):
                                                             "Started Queuing"]
     model.referral_df.rename(columns={"Started Queuing":"Wait time"}, 
                                                                   inplace=True)
+    
+    st.header("Raw Data")
+    st.write("Full list of patients who have finished queueing (being treated"
+             " or have been discharged)")
+    st.write(model.results_df)
+    "Current wait list"
+    st.write(model.referral_df)
     
     #Stats
     wait_all_stats = model.results_df["Wait time"].describe()
