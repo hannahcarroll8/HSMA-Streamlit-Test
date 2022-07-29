@@ -443,8 +443,8 @@ for run in range(g.num_runs):
     wait_all_stats = wait_all_stats.to_frame()
     wait_all_stats = wait_all_stats.T
     
-    wait_by_treatment_stats = model.results_df[["Stage", "Wait time"]].groupby(
-                                                           "Stage").describe()
+    wait_by_treatment_stats = model.results_df[["Referred_to", "Wait time"]].groupby(
+                                                           "Referred_to").describe()
     wait_by_treatment_stats.columns=wait_by_treatment_stats.columns.droplevel(-2)
     
     wait_by_evening_stats = model.results_df[["Evening Appt?", 
