@@ -1,5 +1,5 @@
-simpy==4.0.1
-pandas==1.2.4
-numpy==1.20.1
-streamlit==1.9.1
-typing-extensions==3.7.4.3
+simpy
+pandas
+numpy
+streamlit
+typing-extensions
