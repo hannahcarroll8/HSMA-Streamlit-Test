@@ -468,7 +468,7 @@ if st.button("Run"):
     dfs = [df1, df2]
     new_df = pd.concat(dfs)
     
-    st.write(new_df)
+    new_df
     
     #Create separate dfs for each appt type, separating completed and queueing
     
