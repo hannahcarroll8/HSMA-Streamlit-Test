@@ -465,8 +465,7 @@ if st.button("Run"):
     
     df1 = g.current_q_df.copy()
     df2 = g.completed_df.copy()
-    dfs = [df1, df2]
-    new_df = pd.concat(dfs)
+    new_df = df1.append(df2)
     
     new_df
     
