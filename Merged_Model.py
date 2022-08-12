@@ -478,7 +478,7 @@ if st.button("Run"):
     F2F_day_121_waiting = g.current_q_df[(g.current_q_df['Stage'] == '121') & 
                         (g.current_q_df['Evening Appt?'] ==0) &  
                         (g.current_q_df['Need F2F?'] ==1)]
-    F2F_eve_121_complete=g.completed_df[(g.completed_df['Referred_to']=='121')& 
+    F2F_eve_121_complete=g.completed_df[(g.completed_df['Stage']=='121')& 
                         (g.completed_df['Evening Appt?'] ==1) & 
                         (g.completed_df['Need F2F?'] ==1)]
     F2F_eve_121_waiting = g.current_q_df[(g.current_q_df['Stage'] == '121') & 
