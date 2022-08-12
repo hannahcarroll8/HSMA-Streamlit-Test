@@ -465,7 +465,7 @@ if st.button("Run"):
     
     df1 = g.current_q_df.copy()
     df2 = g.completed_df.copy()
-    new_df = df1.append(df2)
+    new_df = df1.merge(df2, on='P_ID', how='outer')
     
     new_df
     
