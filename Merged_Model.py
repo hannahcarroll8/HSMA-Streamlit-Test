@@ -248,8 +248,8 @@ class Step_3_Model:
                     p.f2f_prefer = False
                     
             df_to_add = pd.DataFrame({"P_ID":[p.p_id],
-                                      "Evening Appt?":[p.eve_prefer],
-                                      "Need F2F?":[p.f2f_prefer],
+                                      "Evening Appt?":[False#p.eve_prefer],
+                                      "Need F2F?":[False#p.f2f_prefer],
                                       "Priority Patient?":[p.priority],
                                       "Started Queueing":[p.q_start],
                                       "Stage":[p.treatment]})
