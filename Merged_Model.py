@@ -136,9 +136,9 @@ class g:
 class Patient:
     def __init__(self, p_id):
         self.p_id = p_id
-        self.q_start = 0
-        self.q_end = 0
-        self.wait_time = 0
+        self.q_start = np.nan
+        self.q_end = np.nan
+        self.wait_time = np.nan
         self.appointments = 0
         self.eve_prefer = False
         self.f2f_prefer = False
@@ -248,8 +248,8 @@ class Step_3_Model:
                     p.f2f_prefer = False
                     
             df_to_add = pd.DataFrame({"P_ID":[p.p_id],
-                                      "Evening Appt?":[bool(p.eve_prefer)],
-                                      "Need F2F?":[bool(p.f2f_prefer)],
+                                      "Evening Appt?":[p.eve_prefer)],
+                                      "Need F2F?":[p.f2f_prefer)],
                                       "Priority Patient?":[p.priority],
                                       "Started Queueing":[p.q_start],
                                       "Stage":[p.treatment]})
@@ -454,6 +454,9 @@ if st.button("Run"):
      
     # For current_q change started queueing to wait time
     #Set number of appointments to 0
+    
+    "Completed"
+    g.completed_df
     
     g.current_q_df["Wait time"] = g.sim_duration - g.current_q_df[
                                                             "Started Queueing"]
