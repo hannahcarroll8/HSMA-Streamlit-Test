@@ -462,10 +462,15 @@ if st.button("Run"):
     
     #new_df contains both queueing patients and completed patients
     
+    "Current Queue"
+    g.current_q_df
+    
     df1 = g.current_q_df.copy()
     df2 = g.completed_df.copy()
     
+    "df1"
     df1
+    "df2"
     df2
     
     new_df = df1.append(df2, ignore_index=True)
