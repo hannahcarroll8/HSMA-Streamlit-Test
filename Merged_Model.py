@@ -447,16 +447,14 @@ class Step_3_Model:
         self.env.process(self.generate_patients())
         self.env.run(until=g.sim_duration)
     
-    
+st.title("Steps 2 Wellbeing Discrete Event Simulation") 
+"Please set your parameters on the left hand side, then press Run"       
 if st.button("Run"):
     model = Step_3_Model()
     model.run()
      
     # For current_q change started queueing to wait time
     #Set number of appointments to 0
-    
-    "Completed"
-    g.completed_df
     
     g.current_q_df["Wait time"] = g.sim_duration - g.current_q_df[
                                                             "Started Queueing"]
@@ -465,20 +463,10 @@ if st.button("Run"):
     
     #new_df contains both queueing patients and completed patients
     
-    "Current Queue"
-    g.current_q_df
-    
     df1 = g.current_q_df.copy()
     df2 = g.completed_df.copy()
     
-    "df1"
-    df1
-    "df2"
-    df2
-    
     new_df = df1.append(df2, ignore_index=True)
-    
-    new_df
     
     #Create separate dfs for each appt type, separating completed and queueing
     
@@ -559,7 +547,7 @@ if st.button("Run"):
         daily_df['Finished Queueing'] = daily_df[
                            'Finished Queueing'].replace(np.nan,sim_duration+1)
         for i in range(warm_up, sim_duration):
-            a = daily_df[(daily_df['Started Queuing'] <= i) & (
+            a = daily_df[(daily_df['Started Queueing'] <= i) & (
                 daily_df['Finished Queueing'] > i)].count()
             if i == warm_up:
                 summary = (a[0])
@@ -694,7 +682,7 @@ if st.button("Run"):
             v_day_121_text = f"average wait {v_day_121_wait_q} weeks"
         else:
             v_day_121_wait_q = 'WL Cleared'
-            v_day__121_text = 'WL Cleared'
+            v_day_121_text = 'WL Cleared'
         if len(v_eve_121_waiting) > 0:
             v_eve_121_wait_q =round(v_eve_121_waiting['Wait time'].sum()/
                                     len(v_eve_121_waiting.index),1)
@@ -706,7 +694,7 @@ if st.button("Run"):
         if len(IESO_waiting) > 0:
             IESO_wait_q = round(IESO_waiting['Wait time'].sum()/
                                 len(IESO_waiting.index),1)
-            IESO_text = f"average wait {IESO_wait_q} weeks"
+            IESO_delta_text = f"average wait {IESO_wait_q} weeks"
         else:
             IESO_delta = 'WL Cleared'
             IESO_delta_text = 'WL Cleared'
