@@ -455,10 +455,9 @@ if st.button("Run"):
     # For current_q change started queueing to wait time
     #Set number of appointments to 0
     
-    g.current_q_df["Started Queueing"] = g.sim_duration - g.current_q_df[
+    g.current_q_df["Wait time"] = g.sim_duration - g.current_q_df[
                                                             "Started Queueing"]
-    g.current_q_df.rename(columns={"Started Queueing":"Wait time"}, 
-                                                                  inplace=True)
+    g.current_q_df["Finished Queueing"] = np.nan
     g.current_q_df["No of Appts"] = 0
     
     #new_df contains both queueing patients and completed patients
