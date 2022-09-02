@@ -14,7 +14,7 @@ import streamlit as st
 class g:
     with st.sidebar:
         mean_new = st.number_input("Mean number of new patients per week", 
-                                   min_value=0.0, max_value=200.0, value=44.29)
+                                   min_value=0.0, max_value=200.0, value=65.0)
         percent_prefer_eve = st.number_input("Percentage of patients who "
                                              "prefer evening appointments", 
                                           min_value = 0.0, max_value=100.0, 
@@ -31,17 +31,17 @@ class g:
         prob_priority = percent_priority/100
         percent_ieso = st.number_input("Percentage of patients who are "
                                        "referred to IESO", min_value = 0.0, 
-                                       max_value=1.0, value=0.18)
+                                       max_value=100.0, value=10.0)
         prob_refer_ieso = percent_ieso/100
         percent_121 = st.number_input("Percentage of patients who are "
                                       "referred to 121 therapy", 
                                       min_value = 0.0, max_value=100.0, 
-                                      value=63.0)
+                                      value=72.0)
         prob_refer_121 = percent_121/100
         percent_group = st.number_input("Percentage of patients who are "
                                         "referred to group thereapy", 
                                         min_value = 0.0, max_value=100.0, 
-                                        value=19.0)
+                                        value=18.0)
         prob_refer_group = percent_group/100
         mean_wait_ieso = st.number_input("Mean number of weeks patients wait "
                                          "for IESO", min_value = 0.0, 
@@ -61,10 +61,10 @@ class g:
         num_group_spaces_v = st.number_input("Number of spaces available on "
                                              "each virtual group", 
                                              min_value = 2, max_value = 20, 
-                                             value = 6)
+                                             value = 14)
         num_group_spaces_f2f = st.number_input("Number of spaces available on "
                                                "each F2F group", min_value = 2, 
-                                               max_value = 20, value = 6)
+                                               max_value = 20, value = 14)
         num_v_eve_groups = st.number_input("Number of virtual evening groups "
                                            "running per week", min_value = 1, 
                                            max_value = 30, value = 4)
