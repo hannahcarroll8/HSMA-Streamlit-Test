@@ -763,7 +763,6 @@ if st.button("Run"):
                                 delta = v_eve_group_text)
 
     st.markdown('##')
-    st.write('''Priority and no priority current assessed as one group''')
 
     st.markdown('##')
     #with st.expander('Data Tables'):
