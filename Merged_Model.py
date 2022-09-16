@@ -449,8 +449,12 @@ class Step_3_Model:
     
 st.title("Steps 2 Wellbeing Discrete Event Simulation") 
 "Please set your parameters on the left hand side, then press Run"
-f = open("variables_explanation_text.txt", 'r')
-variables_explanation = f.read()
+f1 = open("variables_explanation_text.txt", 'r')
+variables_explanation = f1.read()
+f2 = open("further_explanation.txt", "r")
+information = f2.read()
+with st.expander("Click here for more information on this tool"):
+    st.write(information)
 with st.expander("Click here to see a detailed explanation of the variables on the left"):
     st.write(variables_explanation)
 if st.button("Run"):
