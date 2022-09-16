@@ -1,0 +1,21 @@
+Mean number of new patients per week - The mean number of patients joining the Step 3 high intensity waiting list post-assessment each week
+Percentage of patients who prefer evening appointments – The percentage of all Step 3 high intensity patients who request evening appointments
+Percentage of patients who prefer face to face appointments - The percentage of all Step 3 high intensity patients who request face to face appointments
+Percentage patients who are priority patients - The percentage of all Step 3 high intensity patients who have priority status
+Percentage of patients who are referred to IESO - The percentage of all Step 3 high intensity patients who are referred to IESO therapy after assessment. PERCENTAGES FOR IESO, 121, AND GROUP MUST ADD UP TO 100%.
+Percentage of patients who are referred to 121 therapy - The percentage of all Step 3 high intensity patients who are referred to one to one therapy after assessment. PERCENTAGES FOR IESO, 121, AND GROUP MUST ADD UP TO 100%.
+Percentage of patients who are referred to group therapy - The percentage of all Step 3 high intensity patients who are referred to group therapy after assessment. PERCENTAGES FOR IESO, 121, AND GROUP MUST ADD UP TO 100%.
+Mean number of weeks patients wait for IESO – The mean number of weeks a patient will wait from assessment to commencing IESO therapy
+(Mean) number of sessions for a full course of group therapy – The number of sessions a patient would be offered for a full course of group therapy. If this is not the same for all groups use the mean. This assumes one session is offered per week, and if a patient drops out of a group their space is not filled by another patient part way through the course.
+Mean number of sessions patients undertake for 121 therapy – The mean number of sessions a patient would complete on a course of one to one therapy. Please include DNAs and patients who dropped out when calculating this mean. This assumes one session is offered per week.
+Mean number of sessions patients undertake for IESO - The mean number of sessions a patient would complete on a course of IESO therapy. Please include DNAs and patients who dropped out when calculating this mean. This assumes one session is offered per week. 
+Number of spaces available on each virtual group – The maximum number of patients who can be accommodated on one virtual group therapy session.
+Number of spaces available on each F2F group - The maximum number of patients who can be accommodated on one face to face group therapy session.
+Number of virtual evening groups running per week – The total number of virtual groups running in the evening on an average week.
+Number of virtual daytime groups running per week - The total number of virtual groups running in the daytime on an average week.
+Number of face to face evening groups running per week - The total number of face to face groups running in the evening on an average week. This can be set to 0.
+Number of face to face daytime groups running per week - The total number of face to face groups running in the daytime on an average week. This can be set to 0.
+Number of evening face to face 121 appointments available per week – The total number of face to face one to one appointments available in the evening each week.
+Number of evening virtual 121 appointments available per week - The total number of virtual one to one appointments available in the evening each week.
+Number of daytime face to face 121 appointments available per week - The total number of face to face one to one appointments available in the daytime each week.
+Number of daytime virtual 121appointments available per week - The total number of virtual one to one appointments available in the daytime each week.
