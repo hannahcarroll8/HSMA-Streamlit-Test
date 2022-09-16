@@ -1,4 +1,12 @@
 This is a discrete event simulation tool for the Steps to Wellbeing Step 3 High Intensity Pathway.
 The model simulates one year of activity (after a 2 year warm up period) and outputs wait time statistics for various treatment types.
+
 The "total clients seen" section relates to patients who have finished waiting and started treatment (treatment could be completed or ongoing).
 The "total clients waiting" section relates to patients currently on the wait list.
+
+This model was developed by;
+
+- Katie Brown - katie.brown3@nhs.net - CBT Therapist, Steps to Wellbeing [Dorset HealthCare]
+- Hannah Carroll - hannah.carroll8@nhs.net - Senior Systems Support Technician, IT Department [Dorset HealthCare]
+- Andrew Poole - Andrew.Poole@nhsdorset.nhs.uk - Modelling and Analytics Lead, Dorset Intelligence and Insight Service [NHS Dorset]
+- Matthew Chapman - matthew.chapman4@nhs.net - Data Quality Lead, Business and Performance [Dorset HealthCare]
