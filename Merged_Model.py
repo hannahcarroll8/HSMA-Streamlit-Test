@@ -15,7 +15,8 @@ class g:
     with st.sidebar:
         mean_new = st.number_input("Mean number of new patients per week", 
                                    min_value=0.0, max_value=200.0, value=65.0)
-        st.info('This is a purely informational message', icon="ℹ️")
+        with st.expander("i"):
+            st.write("The mean number of patients joining the Step 3 high intensity waiting list post-assessment each week")
         percent_prefer_eve = st.number_input("Percentage of patients who "
                                              "prefer evening appointments", 
                                           min_value = 0.0, max_value=100.0, 
