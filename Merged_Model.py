@@ -15,8 +15,6 @@ class g:
     with st.sidebar:
         mean_new = st.number_input("Mean number of new patients per week", 
                                    min_value=0.0, max_value=200.0, value=65.0)
-        with st.expander("i"):
-            st.write("The mean number of patients joining the Step 3 high intensity waiting list post-assessment each week")
         percent_prefer_eve = st.number_input("Percentage of patients who "
                                              "prefer evening appointments", 
                                           min_value = 0.0, max_value=100.0, 
@@ -450,7 +448,11 @@ class Step_3_Model:
         self.env.run(until=g.sim_duration)
     
 st.title("Steps 2 Wellbeing Discrete Event Simulation") 
-"Please set your parameters on the left hand side, then press Run"       
+"Please set your parameters on the left hand side, then press Run"
+f = open("variables_explanation_text.txt", 'r')
+variables_explanation = f.read()
+with st.expander("Click here to see a detailed explanation of the variables on the left"):
+    st.write(variables_explanation)
 if st.button("Run"):
     model = Step_3_Model()
     model.run()
