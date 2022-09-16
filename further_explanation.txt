@@ -1,0 +1,4 @@
+This is a discrete event simulation tool for the Steps to Wellbeing Step 3 High Intensity Pathway.
+The model simulates one year of activity (after a 2 year warm up period) and outputs wait time statistics for various treatment types.
+The "total clients seen" section relates to patients who have finished waiting and started treatment (treatment could be completed or ongoing).
+The "total clients waiting" section relates to patients currently on the wait list.
