@@ -663,14 +663,14 @@ if st.button("Run"):
         if len(F2F_day_121_waiting) > 0:
             F2F_day_121_wait_q = round(F2F_day_121_waiting['Wait time'].sum()/
                                        len(F2F_day_121_waiting.index),1)
-            F2F_day_121_text = f"average wait {F2F_day_121_wait_q} weeks"
+            F2F_day_121_text = F2F_day_121_wait_q
         else:
             F2F_day_121_wait_q = 'WL Cleared'
             F2F_day_121_text = 'WL Cleared'
         if len(F2F_eve_121_waiting) > 0:
             F2F_eve_121_wait_q =round(F2F_eve_121_waiting['Wait time'].sum()/
                                       len(F2F_eve_121_waiting.index),1)
-            F2F_eve_121_text = f"average wait {F2F_eve_121_wait_q} weeks"
+            F2F_eve_121_text = F2F_eve_121_wait_q
         else:
             F2F_eve_121_wait_q = 'WL Cleared'
             F2F_eve_121_text = 'WL Cleared'
@@ -678,14 +678,14 @@ if st.button("Run"):
         if len(v_day_121_waiting) > 0:
             v_day_121_wait_q = round(v_day_121_waiting['Wait time'].sum()/
                                      len(v_day_121_waiting.index),1)
-            v_day_121_text = f"average wait {v_day_121_wait_q} weeks"
+            v_day_121_text = v_day_121_wait_q
         else:
             v_day_121_wait_q = 'WL Cleared'
             v_day_121_text = 'WL Cleared'
         if len(v_eve_121_waiting) > 0:
             v_eve_121_wait_q =round(v_eve_121_waiting['Wait time'].sum()/
                                     len(v_eve_121_waiting.index),1)
-            v_eve_121_text = f"average wait {v_eve_121_wait_q} weeks"
+            v_eve_121_text = v_eve_121_wait_q
         else:
             v_eve_121_wait_q = 'WL Cleared'
             v_eve_121_text = 'WL Cleared'
@@ -693,7 +693,7 @@ if st.button("Run"):
         if len(IESO_waiting) > 0:
             IESO_wait_q = round(IESO_waiting['Wait time'].sum()/
                                 len(IESO_waiting.index),1)
-            IESO_delta_text = f"average wait {IESO_wait_q} weeks"
+            IESO_delta_text = IESO_wait_q
         else:
             IESO_delta = 'WL Cleared'
             IESO_delta_text = 'WL Cleared'
@@ -701,14 +701,14 @@ if st.button("Run"):
         if len(v_day_group_waiting) > 0:
             v_day_group_wait_q = round(v_day_group_waiting['Wait time'].sum()/
                                    len(v_day_group_waiting.index),1)
-            v_day_group_text = f"average wait {v_day_group_wait_q} weeks"
+            v_day_group_text = v_day_group_wait_q
         else:
             v_day_group_wait_q = 'WL Cleared'
             v_day_group_text = 'WL Cleared'
         if len(v_eve_group_waiting) > 0:
             v_eve_group_wait_q = round(v_eve_group_waiting['Wait time'].sum()/
                                        len(v_eve_group_waiting.index),1)
-            v_eve_group_text = f"average wait {v_eve_group_wait_q} weeks"
+            v_eve_group_text = v_eve_group_wait_q
         else:
             v_eve_group_wait_q = 'WL Cleared'
             v_eve_group_text = 'WL Cleared'
