@@ -626,39 +626,39 @@ if st.button("Run"):
     st.subheader('Summary Metrics')
     st.markdown('##')
     #Two separate tabs for patients seen and patients waiting
-    tab31, tab32 = st.tabs(["Total Clients Seen", "Total Clients Waiting"])
+    tab31, tab32 = st.tabs(["Clients Seen", "Clients Waiting"])
     with tab31:
         #Metrics for patients seen separated by appointment type
-        st.subheader('''Total Clients Seen''')
+        st.subheader('''Wait Times For Clients Seen''')
         col16,col17,col18,col19 = st.columns (4)
-        F2F_Day_121_metric = col16.metric(label = '121 F2F day patients seen', 
-                            value = f"Average wait {F2F_day_121_wait} weeks")
-        F2F_Eve_121_metric = col17.metric(label = '121 F2F evening patients seen', 
-                            value = f"average wait {F2F_eve_121_wait} weeks")
-        v_Day_121_metric = col18.metric(label = '121 virtual day patients seen', 
-                            value = f"average wait {v_day_121_wait} weeks")
-        v_Eve_121_metric = col19.metric(label='121 virtual evening patients seen', 
-                            value = f"average wait {v_eve_121_wait} weeks")
-        IESO_metric = col16.metric(label = 'IESO patients seen', 
-                            value = f"average wait {IESO_wait} weeks")
-        v_Day_group_metric = col17.metric(label = 'Group virtual day patients seen', 
-                            value = f"average wait {v_day_group_wait} weeks")
-        v_Eve_group_metric =col18.metric(label ='Group virtual evening patients seen', 
-                            value = f"average wait {v_eve_group_wait} weeks")
+        F2F_Day_121_metric = col16.metric(label = '121 F2F day patients', 
+                            value = F2F_day_121_wait)
+        F2F_Eve_121_metric = col17.metric(label = '121 F2F evening patients', 
+                            value = F2F_eve_121_wait)
+        v_Day_121_metric = col18.metric(label = '121 virtual day patients', 
+                            value = v_day_121_wait)
+        v_Eve_121_metric = col19.metric(label='121 virtual evening patients', 
+                            value = v_eve_121_wait)
+        IESO_metric = col16.metric(label = 'IESO patients', 
+                            value = IESO_wait)
+        v_Day_group_metric = col17.metric(label = 'Group virtual day patients', 
+                            value = v_day_group_wait)
+        v_Eve_group_metric =col18.metric(label ='Group virtual evening patients', 
+                            value = v_eve_group_wait)
         if g.num_F2F_day_groups > 0:
-            f2f_day_group_metric = col16.metric(label = 'Group F2F day patients seen',
-                            value = f"average wait {F2F_day_group_wait} weeks")
+            f2f_day_group_metric = col16.metric(label = 'Group F2F day patients',
+                            value = F2F_day_group_wait)
         if g.num_F2F_eve_groups > 0:
-            f2f_eve_group_metric = col17.metric(label = 'Group F2F evening patients seen',
-                            value = f"average wait {F2F_eve_group_wait} weeks")
-        priority_metric = col16.metric(label ='Priority patients seen',
-                                value = f"average wait {priority_wait}")
-        non_priority_metric = col16.metric(label ='Non-priority patients seen',
-                                value = f"average wait {non_priority_wait}")
+            f2f_eve_group_metric = col17.metric(label = 'Group F2F evening patients',
+                            value = F2F_eve_group_wait)
+        priority_metric = col16.metric(label ='Priority patients',
+                                value = priority_wait)
+        non_priority_metric = col16.metric(label ='Non-priority patients',
+                                value = non_priority_wait)
 
     #Metrics for patients waiting separated by appointment type
     with tab32: 
-        st.subheader('''Number of waiting Clients''')
+        st.subheader('''Wait Times for Clients Waiting''')
         col1,col2,col3,col4 = st.columns (4)
         if len(F2F_day_121_waiting) > 0:
             F2F_day_121_wait_q = round(F2F_day_121_waiting['Wait time'].sum()/
@@ -739,19 +739,19 @@ if st.button("Run"):
     tab7.write('Group Evening Waiting list numbers')
     tab7.line_chart(Group_timeline_eve)
 
-    F2F_Day_121_w = col1.metric(label = '121 F2F Day patients waiting', 
+    F2F_Day_121_w = col1.metric(label = '121 F2F Day patients', 
                                 value = F2F_day_121_text)
-    F2F_Eve_121_w = col2.metric(label = '121 F2F Eve patients waiting', 
+    F2F_Eve_121_w = col2.metric(label = '121 F2F Eve patients', 
                                 value = F2F_eve_121_text)
-    v_Day_121_w = col3.metric(label = '121 Virtual Day patients waiting', 
+    v_Day_121_w = col3.metric(label = '121 Virtual Day patients', 
                               value = v_day_121_text)
-    v_Eve_121_w_ = col4.metric(label = '121 Virtual Eve patients waiting', 
+    v_Eve_121_w_ = col4.metric(label = '121 Virtual Eve patients', 
                                value = v_eve_121_text)
-    IESO_w = col1.metric(label = 'IESO patients waiting', 
+    IESO_w = col1.metric(label = 'IESO patients', 
                          value = IESO_delta_text)
-    v_day_Group_w = col2.metric(label = 'Group Virtual Day patients waiting', 
+    v_day_Group_w = col2.metric(label = 'Group Virtual Day patients', 
                                 value = v_day_group_text)
-    v_eve_Group_w = col3.metric(label = 'Group Eve patients waiting', 
+    v_eve_Group_w = col3.metric(label = 'Group Eve patients', 
                                 value = v_eve_group_text)
 
     st.markdown('##')
