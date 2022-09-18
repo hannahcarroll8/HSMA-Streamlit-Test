@@ -39,7 +39,7 @@ class g:
                                       value=72.0)
         prob_refer_121 = percent_121/100
         percent_group = st.number_input("Percentage of patients who are "
-                                        "referred to group thereapy", 
+                                        "referred to group therapy", 
                                         min_value = 0.0, max_value=100.0, 
                                         value=18.0)
         prob_refer_group = percent_group/100
@@ -92,7 +92,7 @@ class g:
                                               "week", min_value = 1, 
                                               max_value = 400, value = 77)
         num_app_121_v_day = st.number_input("Number of daytime virtual 121"
-                                            "appointments available per week", 
+                                            " appointments available per week", 
                                             min_value = 1, max_value = 400, 
                                             value = 293)
         
@@ -449,13 +449,15 @@ class Step_3_Model:
     
 st.title("Steps 2 Wellbeing Discrete Event Simulation") 
 "Please set your parameters on the left hand side, then press Run"
+#Expanders with further explanation of the model
 f1 = open("variables_explanation_text.txt", 'r')
 variables_explanation = f1.read()
 f2 = open("further_explanation.txt", "r")
 information = f2.read()
 with st.expander("Click here for more information on this tool"):
     st.write(information)
-with st.expander("Click here to see a detailed explanation of the variables on the left"):
+with st.expander("Click here to see a detailed explanation of the variables" 
+                 "on the left"):
     st.write(variables_explanation)
 if st.button("Run"):
     model = Step_3_Model()
@@ -630,40 +632,29 @@ if st.button("Run"):
         st.subheader('''Total Clients Seen''')
         col16,col17,col18,col19 = st.columns (4)
         F2F_Day_121_metric = col16.metric(label = '121 F2F day patients seen', 
-                                value = len(F2F_day_121_complete.index), 
-                                delta = f"Average wait {F2F_day_121_wait} weeks")
+                            value = f"Average wait {F2F_day_121_wait} weeks")
         F2F_Eve_121_metric = col17.metric(label = '121 F2F evening patients seen', 
-                                 value = len(F2F_eve_121_complete.index), 
-                                 delta = f"average wait {F2F_eve_121_wait} weeks")
+                            value = f"average wait {F2F_eve_121_wait} weeks")
         v_Day_121_metric = col18.metric(label = '121 virtual day patients seen', 
-                                 value = len(v_day_121_complete.index), 
-                                 delta = f"average wait {v_day_121_wait} weeks")
+                            value = f"average wait {v_day_121_wait} weeks")
         v_Eve_121_metric = col19.metric(label='121 virtual evening patients seen', 
-                                 value = len(v_eve_121_complete.index), 
-                                 delta = f"average wait {v_eve_121_wait} weeks")
+                            value = f"average wait {v_eve_121_wait} weeks")
         IESO_metric = col16.metric(label = 'IESO patients seen', 
-                            value = len(IESO_complete.index), 
-                            delta = f"average wait {IESO_wait} weeks")
+                            value = f"average wait {IESO_wait} weeks")
         v_Day_group_metric = col17.metric(label = 'Group virtual day patients seen', 
-                                 value = len(v_day_group_complete.index), 
-                                 delta = f"average wait {v_day_group_wait} weeks")
+                            value = f"average wait {v_day_group_wait} weeks")
         v_Eve_group_metric =col18.metric(label ='Group virtual evening patients seen', 
-                                  value = len(v_eve_group_complete.index), 
-                                  delta = f"average wait {v_eve_group_wait} weeks")
+                            value = f"average wait {v_eve_group_wait} weeks")
         if g.num_F2F_day_groups > 0:
             f2f_day_group_metric = col16.metric(label = 'Group F2F day patients seen',
-                               value = len(f2f_day_group_complete.index),
-                               delta = f"average wait {F2F_day_group_wait} weeks")
+                            value = f"average wait {F2F_day_group_wait} weeks")
         if g.num_F2F_eve_groups > 0:
             f2f_eve_group_metric = col17.metric(label = 'Group F2F evening patients seen',
-                               value = len(f2f_eve_group_complete.index),
-                               delta = f"average wait {F2F_eve_group_wait} weeks")
+                            value = f"average wait {F2F_eve_group_wait} weeks")
         priority_metric = col16.metric(label ='Priority patients seen',
-                                value = len(priority_complete.index),
-                                delta = f"average wait {priority_wait}")
+                                value = f"average wait {priority_wait}")
         non_priority_metric = col16.metric(label ='Non-priority patients seen',
-                                value = len(non_priority_complete.index),
-                                delta = f"average wait {non_priority_wait}")
+                                value = f"average wait {non_priority_wait}")
 
     #Metrics for patients waiting separated by appointment type
     with tab32: 
@@ -749,26 +740,19 @@ if st.button("Run"):
     tab7.line_chart(Group_timeline_eve)
 
     F2F_Day_121_w = col1.metric(label = '121 F2F Day patients waiting', 
-                                value = len(F2F_day_121_waiting.index), 
-                                delta = F2F_day_121_text)
+                                value = F2F_day_121_text)
     F2F_Eve_121_w = col2.metric(label = '121 F2F Eve patients waiting', 
-                                value = len(F2F_eve_121_waiting.index), 
-                                delta = F2F_eve_121_text)
+                                value = F2F_eve_121_text)
     v_Day_121_w = col3.metric(label = '121 Virtual Day patients waiting', 
-                              value = len(v_day_121_waiting.index), 
-                              delta = v_day_121_text)
+                              value = v_day_121_text)
     v_Eve_121_w_ = col4.metric(label = '121 Virtual Eve patients waiting', 
-                               value = len(v_eve_121_waiting.index), 
-                               delta = v_eve_121_text)
+                               value = v_eve_121_text)
     IESO_w = col1.metric(label = 'IESO patients waiting', 
-                         value = len(IESO_waiting), 
-                         delta = IESO_delta_text)
+                         value = IESO_delta_text)
     v_day_Group_w = col2.metric(label = 'Group Virtual Day patients waiting', 
-                                value = len(v_day_group_waiting.index), 
-                                delta = v_day_group_text)
+                                value = v_day_group_text)
     v_eve_Group_w = col3.metric(label = 'Group Eve patients waiting', 
-                                value = len(v_eve_group_waiting.index), 
-                                delta = v_eve_group_text)
+                                value = v_eve_group_text)
 
     st.markdown('##')
 
