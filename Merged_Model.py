@@ -584,7 +584,6 @@ if st.button("Run"):
                                g.sim_duration,'Need F2F?',0,'Evening Appt?',1)
     
     #Average wait times for each appointment type
-    #Need to add priority
 
     IESO_wait = round(IESO_complete['Wait time'].sum()/
                          len(IESO_complete.index),1)
@@ -629,7 +628,7 @@ if st.button("Run"):
     tab31, tab32 = st.tabs(["Clients Seen", "Clients Waiting"])
     with tab31:
         #Metrics for patients seen separated by appointment type
-        st.subheader('''Wait Times For Clients Seen''')
+        st.subheader('''Wait Times For Clients Seen (Weeks)''')
         col16,col17,col18,col19 = st.columns (4)
         F2F_Day_121_metric = col16.metric(label = '121 F2F day patients', 
                             value = F2F_day_121_wait)
@@ -658,7 +657,7 @@ if st.button("Run"):
 
     #Metrics for patients waiting separated by appointment type
     with tab32: 
-        st.subheader('''Wait Times for Clients Waiting''')
+        st.subheader('''Wait Times for Clients Waiting (Weeks)''')
         col1,col2,col3,col4 = st.columns (4)
         if len(F2F_day_121_waiting) > 0:
             F2F_day_121_wait_q = round(F2F_day_121_waiting['Wait time'].sum()/
