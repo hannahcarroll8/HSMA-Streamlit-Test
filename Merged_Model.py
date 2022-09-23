@@ -717,6 +717,7 @@ if st.button("Run"):
 
     st.markdown('##')
     st.subheader('Trend Graphs')
+    "x = weeks, y = number of patients waiting"
     st.markdown('##')
 
     tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["📈 IESO", "📈 121 F2F Day",'📈 121 Virtual Day','📈 121 F2F Eve','📈 121 Virtual Eve', '📈 Group Day','📈 Group Eve'])
