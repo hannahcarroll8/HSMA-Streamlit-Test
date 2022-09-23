@@ -460,6 +460,8 @@ with st.expander("Click here to see a detailed explanation of the variables"
                  "on the left"):
     st.write(variables_explanation)
 if st.button("Run"):
+    if (g.percent_ieso + g.percent_121 + g.percent_group) /= 100:
+        st.warning('WARNING: PERCENTAGES FOR IESO, 121, AND GROUP DO NOT ADD UP TO 100%', icon="⚠️")
     model = Step_3_Model()
     model.run()
      
