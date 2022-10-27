@@ -461,7 +461,7 @@ f2 = open("further_explanation.txt", "r")
 information = f2.read()
 with st.expander("Click here for more information on this tool"):
     st.write(information)
-with st.expander("Click here to see a detailed explanation of the variables" 
+with st.expander("Click here to see a detailed explanation of the variables " 
                  "on the left"):
     st.write(variables_explanation)
 if st.button("Run"):
@@ -469,10 +469,7 @@ if st.button("Run"):
         st.warning('WARNING: PERCENTAGES FOR IESO, 121, AND GROUP DO NOT ADD UP TO 100%', icon="⚠️")
     for n in range(g.num_runs):
         model = Step_3_Model(n)
-        model.run()
-    
-    g.current_q_df
-    g.completed_df    
+        model.run()    
     
     # For current_q change started queueing to wait time
     #Set number of appointments to 0
@@ -574,13 +571,14 @@ if st.button("Run"):
                 summary = (a[0])
             else:
                 summary = np.append(summary,a[0])
-        
+        summary = summary/g.num_runs  #Divide by num_runs as data for all runs is lumped together      
         return summary
     
     #Calls the above function to generate the data for the graphs
     
     IESO_timeline = daily_df(new_df,'IESO',g.warm_up, g.sim_duration,'','','',
                                                                            '')
+    
     Group_timeline_day = daily_df(new_df,'Group',g.warm_up, g.sim_duration,
                                                       'Evening Appt?',0,'','')
     Group_timeline_eve = daily_df(new_df,'Group',g.warm_up, g.sim_duration,
