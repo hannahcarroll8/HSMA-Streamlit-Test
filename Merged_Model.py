@@ -108,7 +108,7 @@ class g:
     #num F2F daytime group appointments available per week
     
     current_q_df = pd.DataFrame()
-    current_q_df["Run"] = []
+    current_q_df["Run Number"] = []
     current_q_df["P_ID"] = []
     current_q_df["Evening Appt?"] = []
     current_q_df["Priority Patient?"] = []
@@ -118,7 +118,7 @@ class g:
     current_q_df.set_index("P_ID", inplace=True)
     
     completed_df = pd.DataFrame()
-    completed_df["Run"] = []
+    completed_df["Run Number"] = []
     completed_df["P_ID"] = []
     completed_df["Evening Appt?"] = []
     completed_df["Priority Patient?"] = []
@@ -162,9 +162,9 @@ class Patient:
             self.priority = 2
     
 class Step_3_Model:
-    def __init__(self, run):
+    def __init__(self, run_num):
         self.env = simpy.Environment()
-        self.run = run #This keeps count of what run we are on
+        self.run_num = run_num #This keeps count of what run we are on
         self.patient_counter = 0
         
         #Resources - capacity is the number of that appointment type available
@@ -205,7 +205,7 @@ class Step_3_Model:
             
         #Append patient info to completed DF (post warm up only)
         if self.env.now > g.warm_up:
-            df_to_add = pd.DataFrame({"Run":[self.run],
+            df_to_add = pd.DataFrame({"Run Number":[self.run_num],
                                       "P_ID":[p.p_id],
                                       "Evening Appt?":[p.eve_prefer],
                                       "Need F2F?":[p.f2f_prefer],
@@ -251,7 +251,7 @@ class Step_3_Model:
                 else:
                     p.f2f_prefer = False
                     
-            df_to_add = pd.DataFrame({"Run":[self.run],
+            df_to_add = pd.DataFrame({"Run Number":[self.run_num],
                                       "P_ID":[p.p_id],
                                       "Evening Appt?":[p.eve_prefer],
                                       "Need F2F?":[p.f2f_prefer],
@@ -467,8 +467,8 @@ with st.expander("Click here to see a detailed explanation of the variables"
 if st.button("Run"):
     if (g.percent_ieso + g.percent_121 + g.percent_group) != 100:
         st.warning('WARNING: PERCENTAGES FOR IESO, 121, AND GROUP DO NOT ADD UP TO 100%', icon="⚠️")
-    for run in range(g.num_runs):
-        model = Step_3_Model(run)
+    for n in range(g.num_runs):
+        model = Step_3_Model(n)
         model.run()
     
     g.current_q_df
