@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Aug  9 14:34:13 2022
+Created on Thu Oct 27 14:06:57 2022
 
-@author: hannah.carroll
+@author: Hannah.Carroll
 """
 
 import simpy
@@ -108,6 +108,7 @@ class g:
     #num F2F daytime group appointments available per week
     
     current_q_df = pd.DataFrame()
+    current_q_df["Run"] = []
     current_q_df["P_ID"] = []
     current_q_df["Evening Appt?"] = []
     current_q_df["Priority Patient?"] = []
@@ -117,6 +118,7 @@ class g:
     current_q_df.set_index("P_ID", inplace=True)
     
     completed_df = pd.DataFrame()
+    completed_df["Run"] = []
     completed_df["P_ID"] = []
     completed_df["Evening Appt?"] = []
     completed_df["Priority Patient?"] = []
@@ -129,7 +131,7 @@ class g:
     completed_df.set_index("P_ID", inplace=True)
     
     duration = 52
-    num_runs = 1
+    num_runs = 3
     warm_up = 104
     sim_duration = warm_up + duration
     
@@ -160,8 +162,9 @@ class Patient:
             self.priority = 2
     
 class Step_3_Model:
-    def __init__(self):
+    def __init__(self, run):
         self.env = simpy.Environment()
+        self.run = run #This keeps count of what run we are on
         self.patient_counter = 0
         
         #Resources - capacity is the number of that appointment type available
@@ -202,7 +205,8 @@ class Step_3_Model:
             
         #Append patient info to completed DF (post warm up only)
         if self.env.now > g.warm_up:
-            df_to_add = pd.DataFrame({"P_ID":[p.p_id],
+            df_to_add = pd.DataFrame({"Run":[self.run],
+                                      "P_ID":[p.p_id],
                                       "Evening Appt?":[p.eve_prefer],
                                       "Need F2F?":[p.f2f_prefer],
                                       "Priority Patient?":[p.priority],
@@ -247,7 +251,8 @@ class Step_3_Model:
                 else:
                     p.f2f_prefer = False
                     
-            df_to_add = pd.DataFrame({"P_ID":[p.p_id],
+            df_to_add = pd.DataFrame({"Run":[self.run],
+                                      "P_ID":[p.p_id],
                                       "Evening Appt?":[p.eve_prefer],
                                       "Need F2F?":[p.f2f_prefer],
                                       "Priority Patient?":[p.priority],
@@ -462,9 +467,13 @@ with st.expander("Click here to see a detailed explanation of the variables"
 if st.button("Run"):
     if (g.percent_ieso + g.percent_121 + g.percent_group) != 100:
         st.warning('WARNING: PERCENTAGES FOR IESO, 121, AND GROUP DO NOT ADD UP TO 100%', icon="⚠️")
-    model = Step_3_Model()
-    model.run()
-     
+    for run in range(g.num_runs):
+        model = Step_3_Model(run)
+        model.run()
+    
+    g.current_q_df
+    g.completed_df    
+    
     # For current_q change started queueing to wait time
     #Set number of appointments to 0
     
